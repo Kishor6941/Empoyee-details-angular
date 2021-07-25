@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="row">
+        <div class="addEmpTitleContainer">
+            <div class="AddEmpTitlecontainer">
+                <div>Add Employee Details</div>
+            </div>
+            <div class="addEmpbtnContainer">
+                <div class="addnewEmp" (click)="addNewEmployeeBtn()">Add +</div>
+            </div>
+            <div *ngIf="newEmployeeClicked">
+                <div class="formWrapper">
+                    <form>
+                        <div class="form-group name">
+                            <input type="text" class="form-control input" id="name" name="name" [(ngModel)]="model.name" placeholder="Enter Your Name">
+                        </div>
+                        <div class="formgroup position">
+                            <input type="text" class="form-control input" id="position" name="position" [(ngModel)]="model.position" placeholder="Enter Your position">
+                        </div>
+                        <div class="submitBtnContainer">
+                            <button type="submit" class="saveBtn" (click)="addEmployee()">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="tableWrapper">
+                <div class="containerTitle">
+                    <div class="oneTitle">Name</div>
+                    <div class="twoTitle">position</div>
+                    <div class="threeTitle">Action</div>
+                </div>
+                <div class="containerListItem" *ngFor="let employee of employees; let i=index"[style.background-color]="changeColorOne()">
+                    <div class="one">{{employee.name}}</div>
+                    <div class="two">{{employee.position}}</div>
+                    <div class="three">
+                        <button class="btn btn-primary" (click)="editEmployee(i)">Edit</button> &nbsp; &nbsp;
+                        <button class="btn btn-danger" (click)="deleteEmployee(i)">Delete X</button>
+                    </div>
+                 </div>
+                </div>
+
+                <div class="editEmpTitleContainer">
+                    <div class="">Edit Employee</div>
+                </div>
+                <form>
+                    <div class="form-group name">
+                        <input type="text" class="form-control input" id="name" name="name" [(ngModel)]="model2.name" placeholder="Name Here">
+                    </div>
+                    <div class="formgroup position">
+                        <input type="text" class="form-control input" id="position" name="position" [(ngModel)]="model2.position" placeholder="Position Here">
+                    </div>
+                    <div class="btn btn-dark" type="submit" (click)="updateEmployee()">Update</div>
+                </form>
+            </div>
+        </div>
+    </div>
+<!-- </div> -->
